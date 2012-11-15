@@ -245,6 +245,12 @@ define(function(require, exports, module) {
         return element.val() == target.val();
     }, '两次输入的{{display}}不一致，请重新输入');
 
+    addRule('exclude', function (options) {
+        var element = options.element,
+            _array = options.exclude.split('|');
+        return !~$.inArray(element.val(), _array);
+    }, '你输入了不允许的字符，请重新输入');
+
     module.exports = {
         addRule: addRule,
         setMessage: setMessage,
